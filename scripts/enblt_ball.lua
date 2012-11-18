@@ -20,7 +20,7 @@ function start(srcx, srcy, tgtx, tgty)
 end
 
 function update()
-	posx += speedx
-	posy += speedy
+	posx = posx + speedx
+	posy = posy + speedy
 	updatePos(speedx, speedy)
 end

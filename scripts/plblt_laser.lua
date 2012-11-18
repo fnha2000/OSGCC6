@@ -11,6 +11,6 @@ function start(srcx, srcy, tgtx, tgty)
 end
 
 function update()
-	posy -= 10
+	posy = posy - 10
 	updatePos(0, 10)
 end

@@ -1,5 +1,5 @@
 function start()
-	setBGM("battlebgm.wav")
+	setBGM("battleBGM.ogg")
 	setBG("bg.png")
 end
 

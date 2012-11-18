@@ -3,6 +3,6 @@ function start()
 	addMenuChoice("help")
 	addMenuChoice("exit")
 	setBG("mainbg.png")
-	setBGM("bgm.ogg")
+	setBGM("menuBGM.ogg")
 end
 
