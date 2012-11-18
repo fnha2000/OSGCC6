@@ -14,6 +14,7 @@ void enem_load(Enemy *enemy, std::string type) {
 	regFunction(&enemy->script, "updatePos", enem_getPos);
 	regFunction(&enemy->script, "addBullet", enem_recvBullet);
 	regFunction(&enemy->script, "clearBullets", enem_removeBlts);
+	regFunction(&enemy->script, "timePassed", timePassed);
 	runFunction(&enemy->script, "start");
 	enem_loadValues(enemy);
 }
