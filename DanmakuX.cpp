@@ -75,6 +75,7 @@ void loadLevel(std::string lvl) {
 	loadScript(&danmakux.level, filename);
 	regFunction(&danmakux.level, "setBGM", setBGM);
 	regFunction(&danmakux.level, "setBG", setBG);
+	regFunction(&danmakux.level, "addEnemy", addEnemy);
 	regFunction(&danmakux.level, "elapsedTime", timePassed);
 	regFunction(&danmakux.level, "win", winLevel);
 	runFunction(&danmakux.level, "start");

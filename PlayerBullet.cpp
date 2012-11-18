@@ -42,7 +42,7 @@ void plblt_loadValues(PlayerBullet *blt) {
 	for (int i = 0; i < blt->frames; i++) {
 		std::stringstream out;
 		out << i;
-		std::string filename = "playerbullet/" + plbltInitVals.type + "/" + out.str() + ".png";
+		std::string filename = "playerbullets/" + plbltInitVals.type + "/" + out.str() + ".png";
 		blt->images[i] = dx_getGame()->resources.get_image(filename);
 	}
 }
