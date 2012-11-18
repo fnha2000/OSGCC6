@@ -18,6 +18,7 @@ void enem_load(Enemy *enemy, std::string type, float srcx, float srcy) {
 	regFunction(&enemy->script, "kill", enem_kill);
 	regFunction(&enemy->script, "timePassed", timePassed);
 	regFunction(&enemy->script, "win", winLevel);
+	regFunction(&enemy->script, "curHealth", enem_sendHealth);
 	runFunction(&enemy->script, "start", srcx, srcy);
 	enem_loadValues(enemy);
 }
