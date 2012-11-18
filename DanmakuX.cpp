@@ -152,6 +152,7 @@ int addEnemy(lua_State *L) {
 	Enemy newenemy;
 	enem_load(&newenemy, type, srcx, srcy);
 	danmakux.enemies.push_back(newenemy);
+	return 0;
 }
 
 int winLevel(lua_State *L) {
