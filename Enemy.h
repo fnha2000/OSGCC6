@@ -50,6 +50,7 @@ void enem_clearBullets(Enemy *enemy);
 int enem_getPos(lua_State *L);
 int enem_sendHealth(lua_State *L);
 int enem_removeBlts(lua_State *L);
+int enem_spawnItem(lua_State *L);
 int enem_kill(lua_State *L);
 void enem_loadPos(Enemy *enemy);
 void enem_update(Enemy *enemy);

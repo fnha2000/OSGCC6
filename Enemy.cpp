@@ -119,6 +119,13 @@ int enem_kill(lua_State *L) {
 	return 0;
 }
 
+int enem_spawnItem(lua_State *L) {
+	std::string type = lua_tostring(L, 1);
+	lua_pop(L, 1);
+	addItem(type);
+	return 0;
+}
+
 void enem_loadPos(Enemy *enemy) {
 	enemy->x += enemPos.x;
 	enemy->y += enemPos.y;
