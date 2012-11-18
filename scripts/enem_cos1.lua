@@ -8,7 +8,7 @@ height = 5
 function start(srcx, srcy)
 	currentx = srcx
 	currenty = srcy
-	init("normal", currentx, currenty, weight, height, 10, 1, 0)
+	init("cos1", currentx, currenty, width, height, 10, 1, 0)
 end
 
 function update()
@@ -24,16 +24,16 @@ function update()
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
 	
-	if currentx > 100 && currentx < 110 then
+	if currentx > 100 and currentx < 110 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 300 && currentx < 310 then
+	if currentx > 300 and currentx < 310 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 490 && currentx < 500 then
+	if currentx > 490 and currentx < 500 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 690 && currentx < 700 then
+	if currentx > 690 and currentx < 700 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
 end
