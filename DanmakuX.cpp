@@ -433,11 +433,6 @@ void gameLogic() {
 		else danmakux.player->y -= danmakux.player->speed;
 	}
 	for (std::list<PlayerBullet>::iterator i = danmakux.playerbullets.begin(); i != danmakux.playerbullets.end(); i++) {
-		if ((*i).x+(*i).width < 0 || (*i).y+(*i).height < 0 || (*i).x > danmakux.width || (*i).y > danmakux.height || (*i).dead) {
-			plblt_close(&(*i));
-			i = danmakux.playerbullets.erase(i);
-			continue;
-		}
 		for (std::list<Enemy>::iterator j = danmakux.enemies.begin(); j != danmakux.enemies.end(); j++) {
 			if (rect_intersects(&(*j).hitbox, &(*i).hitbox)) {
 				(*j).health -= (*i).damage;
@@ -463,6 +458,10 @@ void gameLogic() {
 					j = danmakux.enemies.erase(j);
 				}
 			}
+		}
+		if ((*i).x+(*i).width < 0 || (*i).y+(*i).height < 0 || (*i).x > danmakux.width || (*i).y > danmakux.height || (*i).dead) {
+			plblt_close(&(*i));
+			i = danmakux.playerbullets.erase(i);
 		}
 	}
 	if (danmakux.player->health <= 0) {
