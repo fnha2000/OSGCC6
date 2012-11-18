@@ -12,18 +12,17 @@ weapontype[1] = "vulcan"
 weapontype[2] = "laser"
 frontdelay[1] = 5
 frontdelay[2] = 2
-sidedelay = 900
-backdelay = 600
+sidedelay = 60
+backdelay = 60
 frontcooldown = 0
-sidecooldown = 0
-backcooldown = 0
+sidecooldown = 60
+backcooldown = 60
 
 function start()
 	init("machine", RADIUS, 375, 500, WIDTH, HEIGHT, MHEALTH, SPEED, FOCUSSPEED, 1, 0)
 end
 
 function update()
-	print isFiring()
 	front, back, side = isFiring()
 	curx, cury = currentPos()
 	if front == 1 then
@@ -42,7 +41,6 @@ function update()
 		else
 			frontcooldown = frontcooldown + 1
 		end
-		framesPast = 0
 	end
 	if back == 1 then
 		if backcooldown == backdelay then

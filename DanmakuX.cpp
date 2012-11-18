@@ -448,6 +448,7 @@ void gameLogic() {
 						enblt_close(&(*k));
 						k = (*j).bullets.erase(k);
 					}
+					if (k == (*j).bullets.end()) break;
 				}
 				if ((*j).health <= 0) {
 					(*j).dead = true;
@@ -458,11 +459,12 @@ void gameLogic() {
 					j = danmakux.enemies.erase(j);
 				}
 			}
+			if (j == danmakux.enemies.end()) break;
 		}
 		if ((*i).x+(*i).width < 0 || (*i).y+(*i).height < 0 || (*i).x > danmakux.width || (*i).y > danmakux.height || (*i).dead) {
 			plblt_close(&(*i));
 			i = danmakux.playerbullets.erase(i);
-			if (danmakux.playerbullets.empty()) break;
+			if (i == danmakux.playerbullets.end()) break;
 		}
 	}
 	if (danmakux.player->health <= 0) {

@@ -38,7 +38,7 @@ void enblt_loadValues(EnemyBullet *blt) {
 	for (int i = 0; i < blt->frames; i++) {
 		std::stringstream out;
 		out << i;
-		std::string filename = "enemybullet/" + enbltInitVals.type + "/" + out.str() + ".png";
+		std::string filename = "enemybullets/" + enbltInitVals.type + "/" + out.str() + ".png";
 		blt->images[i] = dx_getGame()->resources.get_image(filename);
 	}
 }

@@ -18,8 +18,8 @@ function update()
 		currentx = 0
 		xspeed = xspeed * -1
 		updatePos(move, 0)		
-	elseif currentx > 800 && xspeed > 0 then
-		kill()
+	elseif currentx > 800 then
+		if xspeed > 0 then kill() end
 	else
 		updatePos(xspeed, 0)
 	end

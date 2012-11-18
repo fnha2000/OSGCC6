@@ -19,8 +19,8 @@ function update()
 		currentx = bound
 		xspeed = xspeed * -1
 		updatePos(move, 0)
-	elseif currentx < -width && xspeed < 0 then
-		kill()
+	elseif currentx < -width then
+		if xspeed < 0 then kill() end
 	else
 		updatePos(xspeed, 0)
 	end

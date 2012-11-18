@@ -11,7 +11,7 @@ function start(srcx, srcy, tgtx, tgty)
 	posx = srcx-5
 	posy = srcy-25
 	direction = tgtx - srcx
-	init("shotgun", posx, posy, WIDTH, HEIGHT, DAMAGE, 1, 0)
+	init("shockwave", posx, posy, WIDTH, HEIGHT, DAMAGE, 1, 0)
 end
 
 function update()
