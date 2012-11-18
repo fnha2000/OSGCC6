@@ -23,6 +23,7 @@ function start()
 end
 
 function update()
+	print isFiring()
 	front, back, side = isFiring()
 	curx, cury = currentPos()
 	if front == 1 then
