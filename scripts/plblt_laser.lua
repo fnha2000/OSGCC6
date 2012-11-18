@@ -1,6 +1,6 @@
 WIDTH = 5
 HEIGHT = 10
-DAMAGE = 5
+DAMAGE = 2
 posx = 0
 posy = 0
 

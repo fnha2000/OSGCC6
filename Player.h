@@ -13,13 +13,12 @@
 
 typedef struct Player {
 	float x, y, width, height, radius, speed, focusspeed, health, maxhealth;
-	int frames, curframe, animdelay, animframespast, fire;
+	int frames, curframe, animdelay, animframespast, fireFront, fireBack, fireSide;
 	Circle hitbox;
 	SqBox pickupbox;
 	ALLEGRO_BITMAP **images;
 	bool dead, movel, mover, moveu, moved, shielded, focused, canFire;
 	Script script;
-	std::string bullettype[2];
 } Player;
 
 typedef struct plyr_init_Vals {
@@ -34,6 +33,7 @@ bool plyr_hit(Player *player, struct EnemyBullet *p);
 void plyr_loadValues(Player *player);
 int plyr_addBullet(lua_State *L);
 int plyr_isFiring(lua_State *L);
+int plyr_sendPos(lua_State *L);
 void plyr_update(Player *player);
 void plyr_animate(Player *player);
 void plyr_close(Player *player);

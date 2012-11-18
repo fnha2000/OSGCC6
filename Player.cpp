@@ -8,9 +8,10 @@ void plyr_load(Player *player, std::string type) {
 	regFunction(&player->script, "init", plyr_init);
 	regFunction(&player->script, "isFiring", plyr_isFiring);
 	regFunction(&player->script, "addBullet", plyr_addBullet);
+	regFunction(&player->script, "currentPos", plyr_sendPos);
 	runFunction(&player->script, "start");
 	plyr_loadValues(player);
-	player->fire = 0;
+	player->fireFront = player->fireBack = player->fireSide = 0;
 }
 
 int plyr_init(lua_State *L) {
@@ -25,9 +26,7 @@ int plyr_init(lua_State *L) {
 	plyrInitVals.focusspeed = lua_tonumber(L, 9);
 	plyrInitVals.frames = lua_tointeger(L, 10);
 	plyrInitVals.animdelay = lua_tointeger(L, 11);
-	plyrInitVals.bullettype[0] = lua_tostring(L, 12);
-	plyrInitVals.bullettype[1] = lua_tostring(L, 13);
-	lua_pop(L, 13);
+	lua_pop(L, 11);
 	return 0;
 }
 
@@ -53,8 +52,6 @@ void plyr_loadValues(Player *player) {
 	player->health = player->maxhealth = plyrInitVals.mhlth;
 	player->speed = plyrInitVals.speed;
 	player->focusspeed = plyrInitVals.focusspeed;
-	player->bullettype[0] = plyrInitVals.bullettype[0];
-	player->bullettype[1] = plyrInitVals.bullettype[1];
 	circ_init(&player->hitbox, (player->x + (player->width/2)), (player->y + (player->height/2)), player->radius);
 	rect_init(&player->pickupbox, player->x, player->y, player->width, player->height);
 }
@@ -80,8 +77,16 @@ int plyr_addBullet(lua_State *L) {
 }
 
 int plyr_isFiring(lua_State *L) {
-	lua_pushinteger(L, dx_getGame()->player->fire);
-	return 1;
+	lua_pushinteger(L, dx_getGame()->player->fireFront);
+	lua_pushinteger(L, dx_getGame()->player->fireBack);
+	lua_pushinteger(L, dx_getGame()->player->fireSide);
+	return 3;
+}
+
+int plyr_sendPos(lua_State *L) {
+	lua_pushnumber(L, dx_getGame()->player->x);
+	lua_pushnumber(L, dx_getGame()->player->y);
+	return 2;
 }
 
 void plyr_update(Player *player) {

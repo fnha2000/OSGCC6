@@ -288,10 +288,13 @@ void gameloop() {
 						danmakux.player->mover = true;
 						break;
 					case ALLEGRO_KEY_Z:
-						danmakux.player->fire = 1;
+						danmakux.player->fireFront = 1;
 						break;
 					case ALLEGRO_KEY_X:
-						danmakux.fireBomb = true;
+						danmakux.player->fireBack = 1;
+						break;
+					case ALLEGRO_KEY_C:
+						danmakux.player->fireSide = 1;
 						break;
 					case ALLEGRO_KEY_LSHIFT:
 						danmakux.player->focused = true;
@@ -382,7 +385,13 @@ void gameloop() {
 						danmakux.player->mover = false;
 						break;
 					case ALLEGRO_KEY_Z:
-						danmakux.player->fire = 0;
+						danmakux.player->fireFront = 0;
+						break;
+					case ALLEGRO_KEY_X:
+						danmakux.player->fireBack = 0;
+						break;
+					case ALLEGRO_KEY_C:
+						danmakux.player->fireSide = 0;
 						break;
 					case ALLEGRO_KEY_LSHIFT:
 						danmakux.player->focused = false;

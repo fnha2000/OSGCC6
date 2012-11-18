@@ -36,7 +36,7 @@ typedef struct enem_newBullet {
 	std::string type;
 	bool exists;
 	int targeted;
-	float srcx, srcy;
+	float srcx, srcy, tgtx, tgty;
 } enem_newBullet;
 
 void enem_load(Enemy *enemy, std::string type, float srcx, float srcy);

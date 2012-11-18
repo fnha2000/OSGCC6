@@ -69,7 +69,9 @@ int enem_recvBullet(lua_State *L) {
 	enemNewBlt.targeted = lua_tointeger(L, 2);
 	enemNewBlt.srcx = lua_tonumber(L, 3);
 	enemNewBlt.srcy = lua_tonumber(L, 4);
-	lua_pop(L, 4);
+	enemNewBlt.tgtx = lua_tonumber(L, 5);
+	enemNewBlt.tgty = lua_tonumber(L, 6);
+	lua_pop(L, 6);
 	return 0;
 }
 
@@ -77,6 +79,9 @@ void enem_addBullet(Enemy *enemy) {
 	EnemyBullet newBullet;
 	if (enemNewBlt.targeted == 0) {
 		enblt_load(&newBullet, enemNewBlt.type, enemNewBlt.srcx, enemNewBlt.srcy, -1, -1);
+		if (enemNewBlt.tgtx > 0 && enemNewBlt.tgty > 0) {
+			enblt_load(&newBullet, enemNewBlt.type, enemNewBlt.srcx, enemNewBlt.srcy, enemNewBlt.tgtx, enemNewBlt.tgty);
+		}
 	}
 	else {
 		float tgtx = dx_getGame()->player->x;
