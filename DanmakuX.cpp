@@ -52,8 +52,7 @@ void init(int width, int height) {
 	danmakux.state_dialog = false;
 	danmakux.menuChoice = 0;
 	danmakux.currentLevel = 1;
-	Player newplayer;
-	danmakux.player = &newplayer;
+	danmakux.player = &playerset;
 	UI = danmakux.resources.get_image("ui.png");
 
 	al_start_timer(timer);
@@ -72,8 +71,6 @@ void loadLevel(std::string lvl) {
 	danmakux.framesPast = 0;
 	if (danmakux.menu.running) closeScript(&danmakux.menu);
 	if (danmakux.level.running) closeScript(&danmakux.level);
-	danmakux.player = &playerset;
-	plyr_load(danmakux.player, "mouse");
 	std::string filename = "lvl_" + lvl + ".lua";
 	loadScript(&danmakux.level, filename);
 	regFunction(&danmakux.level, "setBGM", setBGM);
@@ -337,6 +334,7 @@ void gameloop() {
 							danmakux.state_dialog = false;
 							levelno << danmakux.currentLevel;
 							level = "level" + levelno.str();
+							plyr_load(danmakux.player, "machine");
 							loadLevel(level);
 							break;
 						case 1:
@@ -509,6 +507,7 @@ void gameLogic() {
 			if ((*i).type == "powerup") {
 				runFunction(&danmakux.player->script, "powerup");
 			}
+			item_close(&(*i));
 			i = danmakux.items.erase(i);
 		}
 	}
