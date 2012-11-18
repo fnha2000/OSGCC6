@@ -12,5 +12,5 @@ end
 
 function update()
 	posy = posy - 10
-	updatePos(0, 10)
+	updatePos(0, -10)
 end
