@@ -8,7 +8,7 @@ height = 5
 function start(srcx, srcy)
 	currentx = srcx
 	currenty = srcy
-	init("normal", currentx, currenty, weight, height, 10, 1, 0)
+	init("cos1", currentx, currenty, width, height, 10, 1, 0)
 end
 
 function update()
