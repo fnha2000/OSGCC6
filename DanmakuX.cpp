@@ -427,6 +427,40 @@ void gameLogic() {
 		//dying procedure
 	}
 	for (std::list<Item>::iterator i = danmakux.items.begin(); i != danmakux.items.end(); i++) {
+		if ((*i).type == "wall") {
+			if (danmakux.player->moveu && danmakux.player->y < (*i).y+(*i).height && danmakux.player->x > (*i).x && danmakux.player->x < (*i).x+(*i).width) {
+				if (danmakux.player->focused) {
+					danmakux.player->y += danmakux.player->focusspeed;
+				}
+				else {
+					danmakux.player->y += danmakux.player->speed;
+				}
+			}
+			if (danmakux.player->moved && danmakux.player->y > (*i).y && danmakux.player->x > (*i).x && danmakux.player->x < (*i).x+(*i).width) {
+				if (danmakux.player->focused) {
+					danmakux.player->y -= danmakux.player->focusspeed;
+				}
+				else {
+					danmakux.player->y -= danmakux.player->speed;
+				}
+			}
+			if (danmakux.player->movel && danmakux.player->x < (*i).x+(*i).width && danmakux.player->y > (*i).y && danmakux.player->y < (*i).y+(*i).height) {
+				if (danmakux.player->focused) {
+					danmakux.player->x += danmakux.player->focusspeed;
+				}
+				else {
+					danmakux.player->x += danmakux.player->speed;
+				}
+			}
+			if (danmakux.player->mover && danmakux.player->x > (*i).x && danmakux.player->y > (*i).y && danmakux.player->y < (*i).y+(*i).height) {
+				if (danmakux.player->focused) {
+					danmakux.player->x -= danmakux.player->focusspeed;
+				}
+				else {
+					danmakux.player->x -= danmakux.player->speed;
+				}
+			}
+		}
 		if (rect_intersects(&(*i).hitbox, &danmakux.player->pickupbox)) {
 			i = danmakux.items.erase(i);
 			//pickup effect
