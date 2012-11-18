@@ -10,7 +10,7 @@ function start(srcx, srcy)
 	currentx = srcx
 	currenty = srcy
 	centerx = srcx + 100
-	init("cos1", currentx, currenty, width, height, 10, 1, 0)
+	init("ellipse1", currentx, currenty, width, height, 10, 1, 0)
 end
 
 function update()
