@@ -12,7 +12,7 @@ function update()
 	if elapsedTime() == 1800 then
 		addEnemy("enem_special", 400, -10)
 	end
-	if (elapsedTime() == 3600 then
+	if elapsedTime() == 3600 then
 		addEnemy("enem_boss1", 300, -100)
 	end
 end
