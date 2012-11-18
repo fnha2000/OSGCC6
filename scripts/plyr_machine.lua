@@ -6,6 +6,8 @@ FOCUSSPEED = 5
 MHEALTH = 1
 powerlevel = 1
 weaponlevel = 1
+weapontype = {}
+frontdelay = {}
 weapontype[1] = "vulcan"
 weapontype[2] = "laser"
 frontdelay[1] = 5
@@ -28,7 +30,7 @@ function update()
 			frontcooldown = 0
 			if powerlevel == 1 then
 				addBullet(weapontype[weaponlevel], curx+25, cury-5, -1, -1)
-			else if powerlevel == 2 then
+			elseif powerlevel == 2 then
 				addBullet(weapontype[weaponlevel], curx+10, cury-5, -1, -1)
 				addBullet(weapontype[weaponlevel], curx+30, cury-5, -1, -1)
 			else
