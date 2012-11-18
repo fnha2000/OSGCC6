@@ -12,14 +12,14 @@ function start(srcx, srcy)
 end
 
 function update()
-	currentx += xspeed
+	currentx = currentx + xspeed
 	if currentx > 800 then
 		kill()
 	else
 		movey = math.sin(math.pi / 200 * currentx)
 		movey = movey * 100 + 250 
 		movey = movey - currenty
-		currenty += movey
+		currenty = currenty + movey
 		updatePos(xspeed, move y)
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)

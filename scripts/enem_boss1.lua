@@ -1,7 +1,7 @@
 currentx = -5
 currenty = -5
 xspeed = 3
-yspeed = 3
+yspeed = 0.5
 width = 200
 height = 150
 health = 1000
@@ -17,26 +17,26 @@ end
 
 function update()
 	if state == 1 then
-		currenty += yspeed
+		currenty = currenty + yspeed
 		updatePos(0, yspeed)
 		if(currenty > 100) then
-			state += 1
+			state = 2
 			clearBullets()
 		else
 			bulletPattern1()
 		end
 	else
-		currentx += xspeed
+		currentx = currentx + xspeed
 		bound = 800 - width
 		if currentx > bound then
 			move = xspeed - currentx + bound
 			currentx = bound
-			xspeed *= -1
+			xspeed = xspeed * -1
 			updatePos(move, 0)
 		elseif currentx < 0 then
 			move = xspeed + currentx
 			currentx = 0
-			xspeed *= -1
+			xspeed = xspeed * -1
 			updatePos(move, 0)		
 		else
 			updatePos(xspeed, 0)
@@ -44,21 +44,21 @@ function update()
 				
 		if state == 2 then
 			if getHealth() < 750 then
-				state += 1
+				state == 3
 				clearBullets()
 			else
 				bulletPattern2()
 			end
 		elseif state == 3 then
 			if getHealth() < 500 then
-				state += 1
+				state = 4
 				clearBullets()
 			else
 				bulletPattern3()
 			end
 		elseif state == 4 then
 			if getHealth() < 250 then
-				state += 1
+				state += 5
 				clearBullets()
 			else
 				bulletPattern4()
@@ -68,7 +68,7 @@ function update()
 		end
 	end
 	
-	counter += 1
+	counter = counter + 1
 	if counter > 300 then conuter = 1 end
 	
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)

@@ -12,12 +12,12 @@ function start(srcx, srcy)
 end
 
 function update()
-	currentx += xspeed
+	currentx = currentx + xspeed
 	bound = 800 - width
 	if currentx > bound then
 		move = xspeed - currentx + bound
 		currentx = bound
-		xspeed *= -1
+		xspeed = xspeed * -1
 		updatePos(move, 0)
 	elseif currentx < -width && xspeed < 0 then
 		kill()

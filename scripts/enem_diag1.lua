@@ -13,8 +13,8 @@ function start(srcx, srcy)
 end
 
 function update()
-	currentx += xspeed
-	currenty += yspeed
+	currentx = currentx + xspeed
+	currenty = currentx + yspeed
 	if currentx > 800 || currenty > 600 then
 		kill()
 	else
