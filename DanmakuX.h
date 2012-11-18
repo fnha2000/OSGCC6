@@ -44,6 +44,7 @@ int addMenuItem(lua_State *L);
 int addEnemy(lua_State *L);
 int winLevel(lua_State *L);
 void addPauseItem(std::string type);
+void addItem(std::string type);
 void clearMenu();
 void clearPause();
 void buildPause();

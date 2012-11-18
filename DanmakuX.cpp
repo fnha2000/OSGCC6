@@ -144,6 +144,12 @@ void addPauseItem(std::string type) {
 	danmakux.pauseitems.push_back(newItem);
 }
 
+void addItem(std::string type) {
+	Item newItem;
+	item_load(&newItem, type);
+	danmakux.items.push_back(newItem);
+}
+
 int addEnemy(lua_State *L) {
 	std::string type = lua_tostring(L, 1);
 	float srcx = lua_tonumber(L, 2);
@@ -451,6 +457,7 @@ void gameLogic() {
 				}
 				if ((*j).health <= 0) {
 					(*j).dead = true;
+					addItem("powerup");
 				}
 				if ((*j).dead && (*j).bullets.empty()) {
 					enem_close(&(*j));
@@ -499,8 +506,10 @@ void gameLogic() {
 			}
 		}
 		if (rect_intersects(&(*i).hitbox, &danmakux.player->pickupbox)) {
+			if ((*i).type == "powerup") {
+				runFunction(&danmakux.player->script, "powerup");
+			}
 			i = danmakux.items.erase(i);
-			//pickup effect
 		}
 	}
 }

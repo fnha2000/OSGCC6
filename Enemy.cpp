@@ -36,6 +36,7 @@ int enem_init(lua_State *L) {
 }
 
 void enem_loadValues(Enemy *enemy) {
+	enemy->type = enemInitVals.type;
 	enemy->x = enemInitVals.px;
 	enemy->y = enemInitVals.py;
 	enemy->width = enemInitVals.width;

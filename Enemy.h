@@ -13,6 +13,7 @@
 #include <string>
 
 typedef struct Enemy {
+	std::string type;
 	float x, y, width, height, health, maxhealth;
 	int frames, curframe, animdelay, animframespast;
 	SqBox hitbox;
