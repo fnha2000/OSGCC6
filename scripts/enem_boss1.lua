@@ -44,7 +44,7 @@ function update()
 				
 		if state == 2 then
 			if getHealth() < 750 then
-				state == 3
+				state = 3
 				clearBullets()
 			else
 				bulletPattern2()
@@ -58,7 +58,7 @@ function update()
 			end
 		elseif state == 4 then
 			if getHealth() < 250 then
-				state += 5
+				state = 5
 				clearBullets()
 			else
 				bulletPattern4()
@@ -98,7 +98,7 @@ function bulletPattern1()
 			addBullet("ball", 0, currentx + 150, currenty + 150, currentx + 200, currenty + 200)
 		end
 	end
-	if counter > 120 && counter <= 240
+	if counter > 120 and counter <= 240 then
 		if (counter % 20) == 0 then 
 			addBullet("ball", 0, currentx + 50, currenty + 50, currentx, currenty + 50)
 			addBullet("ball", 0, currentx + 50, currenty + 50, currentx + 100, currenty + 50)

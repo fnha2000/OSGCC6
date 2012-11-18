@@ -21,7 +21,7 @@ function update()
 	end
 	
 	if (elapsedTime() % 600) == 0 then
-		addEnemy("special", 400, -10)
+		--addEnemy("special", 400, -10)
 	end
 	
 	counter = counter + 1
@@ -29,17 +29,13 @@ function update()
 end
 
 function enemyPattern1()
-	if (elapsedTime() % 20) == 0 then
-		addEnemy("hori1", -10, 100)
-		addEnemy("hori2", 800, 100)
-	end
 	if (elapsedTime() % 40) == 0 then
 		addEnemy("hori1", -10, 150)
-		addEnemy("hori2", 800, 100)
+		addEnemy("hori2", 800, 150)
 	end
 	if (elapsedTime() % 60) == 0 then
 		addEnemy("hori1", -10, 200)
-		addEnemy("hori2", 800, 100)
+		addEnemy("hori2", 800, 200)
 	end
 end
 

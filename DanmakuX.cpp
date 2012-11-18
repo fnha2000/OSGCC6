@@ -1,6 +1,6 @@
 #include "DanmakuX.h"
 
-float FPS = 60.0;
+float FPS = 30.0;
 bool redraw;
 Player playerset;
 DanmakuX danmakux;

@@ -11,8 +11,8 @@ function start(srcx, srcy, tgtx, tgty)
 	length = math.sqrt((tgtx-srcx)^2 + (tgty-srcy)^2)
 	if tgtx < 0 and tgty < 0 then
 		--calculate unit vector * speed
-		speedx = (tgtx - srcx)/length * SPEED
-		speedy = (tgty - srcy)/length * SPEED
+		speedx = (srcx - tgtx)/length * SPEED
+		speedy = (srcy - tgty)/length * SPEED
 	end
 	posx = srcx-1
 	posy = srcy-1

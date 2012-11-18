@@ -20,7 +20,7 @@ function update()
 		movey = movey * 100 + 250 
 		movey = movey - currenty
 		currenty = currenty + movey
-		updatePos(xspeed, move y)
+		updatePos(xspeed, movey)
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
 	

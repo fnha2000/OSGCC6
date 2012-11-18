@@ -1,6 +1,6 @@
 currentx = -5
 currenty = -5
-xspeed = -3
+xspeed = -5
 width = 5
 height = 5
 

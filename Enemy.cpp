@@ -99,8 +99,8 @@ void enem_clearBullets(Enemy *enemy) {
 }
 
 int enem_getPos(lua_State *L) {
-	enemPos.x += lua_tonumber(L, 1);
-	enemPos.y += lua_tonumber(L, 2);
+	enemPos.x = lua_tonumber(L, 1);
+	enemPos.y = lua_tonumber(L, 2);
 	lua_pop(L, 2);
 	return 0;
 }

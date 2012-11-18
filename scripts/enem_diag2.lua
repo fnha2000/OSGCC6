@@ -15,7 +15,7 @@ end
 function update()
 	currentx = currentx + xspeed
 	currenty = currentx + yspeed
-	if currentx < -width || currenty > 600 then
+	if currentx < -width or currenty > 600 then
 		kill()
 	else
 		updatePos(xspeed, yspeed)
