@@ -2,12 +2,14 @@
 
 plblt_init_Vals plbltInitVals;
 PlrBlt_Pos plbltPos;
+bool bltkill = false;
 
 void plblt_load(PlayerBullet *blt, std::string type, float srcx, float srcy, float tgtx, float tgty) {
 	std::string filename = "plblt_" + type + ".lua";
 	loadScript(&blt->script, filename);
 	regFunction(&blt->script, "init", plblt_init);
 	regFunction(&blt->script, "updatePos", plblt_getPos);
+	regFunction(&blt->script, "kill", plblt_kill);
 	runFunction(&blt->script, "start", srcx, srcy, tgtx, tgty);
 	plblt_loadValues(blt);
 }
@@ -52,6 +54,11 @@ bool plblt_hit(PlayerBullet *blt, Enemy *e) {
 	return false;
 }
 
+int plblt_kill(lua_State *L) {
+	bltkill = true;
+	return 0;
+}
+
 int plblt_getPos(lua_State *L) {
 	plbltPos.x = lua_tonumber(L, 1);
 	plbltPos.y = lua_tonumber(L, 2);
@@ -67,6 +74,10 @@ void plblt_loadPos(PlayerBullet *blt) {
 
 void plblt_update(PlayerBullet *blt) {
 	runFunction(&blt->script, "update");
+	if (bltkill) {
+		bltkill = false;
+		blt->dead = true;
+	}
 	plblt_loadPos(blt);
 	plblt_animate(blt);
 }

@@ -1,7 +1,6 @@
 currentx = -5
 currenty = -5
-xspeed = 4
-yspeed = 2
+xspeed = -3
 width = 5
 height = 5
 
@@ -9,26 +8,30 @@ height = 5
 function start(srcx, srcy)
 	currentx = srcx
 	currenty = srcy
-	init("normal", currentx, currenty, weight, height, 10, 1, 0)
+	init("hori2", currentx, currenty, width, height, 10, 1, 0)
 end
 
 function update()
 	currentx += xspeed
-	currenty += yspeed
-	if currentx > 800 || currenty > 600 then
+	if currentx < 0 then
+		move = xspeed + currentx
+		currentx = 0
+		xspeed *= -1
+		updatePos(move, 0)		
+	elseif currentx > 800 && xspeed > 0 then
 		kill()
 	else
-		updatePos(xspeed, yspeed)
+		updatePos(xspeed, 0)
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
-	
-	if currentx > 150 && currentx < 160 then
+
+	if currentx > 200 and currentx < 210 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 350 && currentx < 360 then
+	if currentx > 400 and currentx < 410 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 550 && currentx < 560 then
+	if currentx > 600 and currentx < 610 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
 end

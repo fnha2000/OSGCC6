@@ -1,6 +1,6 @@
 currentx = -5
 currenty = -5
-xspeed = -3
+xspeed = 4
 width = 5
 height = 5
 
@@ -13,25 +13,27 @@ end
 
 function update()
 	currentx += xspeed
-	if currentx < 0 then
-		move = xspeed + currentx
-		currentx = 0
-		xspeed *= -1
-		updatePos(move, 0)		
-	elseif currentx > 800 && xspeed > 0 then
+	if currentx > 800 then
 		kill()
 	else
-		updatePos(xspeed, 0)
+		movey = math.cos(math.pi / 200 * currentx)
+		movey = movey * 100 + 250 
+		movey = movey - currenty
+		currenty += movey
+		updatePos(xspeed, move y)
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
 	
-	if currentx > 200 && currentx < 210 then
+	if currentx > 100 && currentx < 110 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 400 && currentx < 410 then
+	if currentx > 300 && currentx < 310 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 600 && currentx < 610 then
+	if currentx > 490 && currentx < 500 then
+		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+	end
+	if currentx > 690 && currentx < 700 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
 end
