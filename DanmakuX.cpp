@@ -49,7 +49,9 @@ void init(int width, int height) {
 	danmakux.state_menu = true;
 	danmakux.state_paused = false;
 	danmakux.state_playing = false;
+	danmakux.state_dialog = false;
 	danmakux.menuChoice = 0;
+	danmakux.currentLevel = 1;
 	Player newplayer;
 	danmakux.player = &newplayer;
 	UI = danmakux.resources.get_image("ui.png");
@@ -77,6 +79,7 @@ void loadLevel(std::string lvl) {
 	regFunction(&danmakux.level, "setBGM", setBGM);
 	regFunction(&danmakux.level, "setBG", setBG);
 	regFunction(&danmakux.level, "elapsedTime", timePassed);
+	regFunction(&danmakux.level, "win", winLevel);
 	runFunction(&danmakux.level, "start");
 	al_stop_samples();
 	al_play_sample(danmakux.bgm, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
@@ -149,6 +152,15 @@ int addEnemy(lua_State *L) {
 	Enemy newenemy;
 	enem_load(&newenemy, type, srcx, srcy);
 	danmakux.enemies.push_back(newenemy);
+}
+
+int winLevel(lua_State *L) {
+	danmakux.currentLevel++;
+	std::stringstream levelno;
+	levelno << danmakux.currentLevel;
+	std::string level = "level" + levelno.str();
+	loadLevel(level);
+	return 0;
 }
 
 void clearMenu() {
@@ -288,6 +300,8 @@ void gameloop() {
 				}
 			}
 			else if (danmakux.state_menu) {
+				std::stringstream levelno;
+				std::string level;
 				switch (ev.keyboard.keycode) {
 					case ALLEGRO_KEY_UP:
 						danmakux.menuChoice -= 1;
@@ -310,7 +324,10 @@ void gameloop() {
 							danmakux.state_menu = false;
 							danmakux.state_playing = true;
 							danmakux.state_paused = false;
-							loadLevel("level1");
+							danmakux.state_dialog = false;
+							levelno << danmakux.currentLevel;
+							level = "level" + levelno.str();
+							loadLevel(level);
 							break;
 						case 1:
 							break;
