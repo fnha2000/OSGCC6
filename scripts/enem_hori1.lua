@@ -12,12 +12,12 @@ function start(srcx, srcy)
 end
 
 function update()
-	currentx += xspeed
+	currentx = currentx + xspeed
 	bound = 800 - width
 	if currentx > bound then
 		move = xspeed - currentx + bound
 		currentx = bound
-		xspeed *= -1
+		xspeed = xspeed * -1
 		updatePos(move, 0)
 	elseif currentx < -width && xspeed < 0 then
 		kill()
@@ -27,12 +27,12 @@ function update()
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
 
 	if currentx > 200 and currentx < 210 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 	if currentx > 400 and currentx < 410 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 	if currentx > 600 and currentx < 610 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 end

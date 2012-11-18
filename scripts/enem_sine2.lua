@@ -12,28 +12,28 @@ function start(srcx, srcy)
 end
 
 function update()
-	currentx += xspeed
+	currentx = currentx + xspeed
 	if currentx < -width then
 		kill()
 	else
 		movey = math.sin(math.pi / 200 * currentx)
 		movey = movey * 100 + 250 
 		movey = movey - currenty
-		currenty += movey
+		currenty = currenty + movey
 		updatePos(xspeed, move y)
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
 	
 	if currentx > 100 and currentx < 110 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 	if currentx > 300 and currentx < 310 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 	if currentx > 490 and currentx < 500 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 	if currentx > 690 and currentx < 700 then
-		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+		addBullet("ball", 0, currentx + width/2, currenty + height/2, currentx + width/2, currenty + height)
 	end
 end
