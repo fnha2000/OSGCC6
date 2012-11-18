@@ -13,7 +13,7 @@ end
 
 function update()
 	currentx += xspeed
-	if currentx < -width || currentx > 800 then
+	if currentx > 800 then
 		kill()
 	else
 		movey = math.sin(math.pi / 200 * currentx)
