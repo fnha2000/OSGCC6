@@ -401,7 +401,7 @@ void gameLogic() {
 		else danmakux.player->y -= danmakux.player->speed;
 	}
 	for (std::list<PlayerBullet>::iterator i = danmakux.playerbullets.begin(); i != danmakux.playerbullets.end(); i++) {
-		if ((*i).x+(*i).width < 0 || (*i).y+(*i).height < 0 || (*i).x > danmakux.width || (*i).y > danmakux.height) {
+		if ((*i).x+(*i).width < 0 || (*i).y+(*i).height < 0 || (*i).x > danmakux.width || (*i).y > danmakux.height || (*i).dead) {
 			plblt_close(&(*i));
 			i = danmakux.playerbullets.erase(i);
 			continue;

@@ -32,6 +32,7 @@ int plblt_init(lua_State *L);
 void plblt_loadValues(PlayerBullet *blt);
 bool plblt_hit(PlayerBullet *blt, struct Enemy *e);
 int plblt_getPos(lua_State *L);
+int plblt_kill(lua_State *L);
 void plblt_loadPos(PlayerBullet *blt);
 void plblt_update(PlayerBullet *blt);
 void plblt_animate(PlayerBullet *blt);
