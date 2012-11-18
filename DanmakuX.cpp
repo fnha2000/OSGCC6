@@ -462,6 +462,7 @@ void gameLogic() {
 		if ((*i).x+(*i).width < 0 || (*i).y+(*i).height < 0 || (*i).x > danmakux.width || (*i).y > danmakux.height || (*i).dead) {
 			plblt_close(&(*i));
 			i = danmakux.playerbullets.erase(i);
+			if (danmakux.playerbullets.empty()) break;
 		}
 	}
 	if (danmakux.player->health <= 0) {
