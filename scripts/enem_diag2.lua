@@ -22,7 +22,13 @@ function update()
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
 
-	if currentx > 0 && ((currentx % 200) == 0) then
+	if currentx > 250 and currentx < 260 then
+		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+	end
+	if currentx > 450 and currentx < 460 then
+		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+	end
+	if currentx > 650 and currentx < 660 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
 end

@@ -1,6 +1,6 @@
 currentx = -5
 currenty = -5
-xspeed = -3
+xspeed = -4
 width = 5
 height = 5
 
@@ -8,30 +8,32 @@ height = 5
 function start(srcx, srcy)
 	currentx = srcx
 	currenty = srcy
-	init("hori2", currentx, currenty, width, height, 10, 1, 0)
+	init("sine2", currentx, currenty, width, height, 10, 1, 0)
 end
 
 function update()
 	currentx += xspeed
-	if currentx < 0 then
-		move = xspeed + currentx
-		currentx = 0
-		xspeed *= -1
-		updatePos(move, 0)		
-	elseif currentx > 800 && xspeed > 0 then
+	if currentx < -width then
 		kill()
 	else
-		updatePos(xspeed, 0)
+		movey = math.sin(math.pi / 200 * currentx)
+		movey = movey * 100 + 250 
+		movey = movey - currenty
+		currenty += movey
+		updatePos(xspeed, move y)
 	end
 	-- addBullet(typename string, will target player(0 or 1), source position x, source position y)
-
-	if currentx > 200 and currentx < 210 then
+	
+	if currentx > 100 and currentx < 110 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 400 and currentx < 410 then
+	if currentx > 300 and currentx < 310 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
-	if currentx > 600 and currentx < 610 then
+	if currentx > 490 and currentx < 500 then
+		addBullet("ball", 0, currentx + width/2, currenty + height/2)
+	end
+	if currentx > 690 and currentx < 700 then
 		addBullet("ball", 0, currentx + width/2, currenty + height/2)
 	end
 end
