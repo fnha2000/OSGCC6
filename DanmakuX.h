@@ -41,6 +41,7 @@ int setBG(lua_State *L);
 int timePassed(lua_State *L);
 void setPlayer(std::string type);
 int addMenuItem(lua_State *L);
+int addEnemy(lua_State *L);
 void addPauseItem(std::string type);
 void clearMenu();
 void clearPause();

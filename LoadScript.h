@@ -19,6 +19,7 @@ void regFunction(Script *script, std::string regname, lua_CFunction func);
 void runFunction(Script *script, std::string func);
 void runFunction(Script *script, std::string func, std::string obj);
 void runFunction(Script *script, std::string func, lua_Integer obj);
+void runFunction(Script *script, std::string func, lua_Number srcx, lua_Number srcy);
 void runFunction(Script *script, std::string func, lua_Number srcx, lua_Number srcy, lua_Number tgtx, lua_Number tgty);
 void closeScript(Script *script);
 

@@ -5,8 +5,9 @@ enem_position enemPos;
 enem_newBullet enemNewBlt;
 float toSendHealth;
 bool clearBullets = false;
+bool killEnemy = false;
 
-void enem_load(Enemy *enemy, std::string type) {
+void enem_load(Enemy *enemy, std::string type, float srcx, float srcy) {
 	enemNewBlt.exists = false;
 	std::string filename = "enem_" + type + ".lua";
 	loadScript(&enemy->script, filename);
@@ -14,8 +15,9 @@ void enem_load(Enemy *enemy, std::string type) {
 	regFunction(&enemy->script, "updatePos", enem_getPos);
 	regFunction(&enemy->script, "addBullet", enem_recvBullet);
 	regFunction(&enemy->script, "clearBullets", enem_removeBlts);
+	regFunction(&enemy->script, "kill", enem_kill);
 	regFunction(&enemy->script, "timePassed", timePassed);
-	runFunction(&enemy->script, "start");
+	runFunction(&enemy->script, "start", srcx, srcy);
 	enem_loadValues(enemy);
 }
 
@@ -105,6 +107,11 @@ int enem_removeBlts(lua_State *L) {
 	return 0;
 }
 
+int enem_kill(lua_State *L) {
+	killEnemy = true;
+	return 0;
+}
+
 void enem_loadPos(Enemy *enemy) {
 	enemy->x += enemPos.x;
 	enemy->y += enemPos.y;
@@ -114,7 +121,11 @@ void enem_loadPos(Enemy *enemy) {
 void enem_update(Enemy *enemy) {
 	toSendHealth = enemy->health;
 	runFunction(&enemy->script, "update");
-	enem_loadPos(enemy);
+	if (killEnemy) {
+		enemy->dead = true;
+		killEnemy = false;
+	}
+	else enem_loadPos(enemy);
 	if (enemNewBlt.exists) enem_addBullet(enemy);
 	if (clearBullets) {
 		clearBullets = false;

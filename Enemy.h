@@ -39,7 +39,7 @@ typedef struct enem_newBullet {
 	float srcx, srcy;
 } enem_newBullet;
 
-void enem_load(Enemy *enemy, std::string type);
+void enem_load(Enemy *enemy, std::string type, float srcx, float srcy);
 int enem_init(lua_State *L);
 void enem_loadValues(Enemy *enemy);
 bool enem_hit(Enemy *enemy, struct PlayerBullet *p);
@@ -49,6 +49,7 @@ void enem_clearBullets(Enemy *enemy);
 int enem_getPos(lua_State *L);
 int enem_sendHealth(lua_State *L);
 int enem_removeBlts(lua_State *L);
+int enem_kill(lua_State *L);
 void enem_loadPos(Enemy *enemy);
 void enem_update(Enemy *enemy);
 void enem_animate(Enemy *enemy);

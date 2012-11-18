@@ -48,6 +48,16 @@ void runFunction(Script *script, std::string func, lua_Integer obj) {
 	}
 }
 
+void runFunction(Script *script, std::string func, lua_Number srcx, lua_Number srcy) {
+	lua_getglobal(script->luaState, func.c_str());
+	lua_pushnumber(script->luaState, srcx);
+	lua_pushnumber(script->luaState, srcy);
+	if (lua_pcall(script->luaState, 2, 0, 0)) {
+		std::string error = lua_tostring(script->luaState, 1);
+		printf("%s\n", error.c_str());
+	}
+}
+
 void runFunction(Script *script, std::string func, lua_Number srcx, lua_Number srcy, lua_Number tgtx, lua_Number tgty) {
 	lua_getglobal(script->luaState, func.c_str());
 	lua_pushnumber(script->luaState, srcx);

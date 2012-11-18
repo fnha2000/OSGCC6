@@ -141,6 +141,16 @@ void addPauseItem(std::string type) {
 	danmakux.pauseitems.push_back(newItem);
 }
 
+int addEnemy(lua_State *L) {
+	std::string type = lua_tostring(L, 1);
+	float srcx = lua_tonumber(L, 2);
+	float srcy = lua_tonumber(L, 3);
+	lua_pop(L, 3);
+	Enemy newenemy;
+	enem_load(&newenemy, type, srcx, srcy);
+	danmakux.enemies.push_back(newenemy);
+}
+
 void clearMenu() {
 	danmakux.menuitems.clear();
 }
